@@ -1,15 +1,27 @@
 import path from 'path';
 import express from 'express';
-
-import __dirname__ from '../util/rootpath.js';
-import {shops} from './admin.js';
+import fs from 'fs';
+import __dirname from '../util/rootpath.js';
 
 const router = express.Router();
+const shopsFilePath = path.join(__dirname, 'public', 'data', 'shops.json');
 
 router.get('/', function(req, res) {
-    res.render('../views/index.ejs'),{
-        shops: shops
-    }
+    getShops((shops) => {
+        res.render('index.ejs', {
+            shops: shops
+        })
+    })
+    
 })
 
+const getShops = (cb) => {
+    fs.readFile(shopsFilePath, (err, data) => {
+        if (err) {
+          cb([])
+        } else {
+          cb(JSON.parse(data))
+        }
+      })
+    }
 export default router

@@ -1,25 +1,40 @@
 import path from 'path';
 import express from 'express';
 import __dirname from '../util/rootpath.js';
+import fs from 'fs';
 
 const router = express.Router();
+const shopsFilePath = path.join(__dirname, 'public', 'data', 'shops.json');
 
-const shops = [];
 
 router.get('/add-shop', function (req, res) {
-    res.render('../views/add-shop.ejs', {
+    res.render('add-shop.ejs', {
 
     });
 });
 
 router.post('/add-shop', function (req, res) {
-    shops.push(
-        {
-            name : req.body.name,
-            description : req.body.description,
-            location : req.body.location
-        });
+    const newShop = {
+        name : req.body.name,
+        description : req.body.description,
+        location : req.body.location
+    }
+    saveShop(newShop);
     res.redirect('/');
 })
 
-export {router as adminRoutes, shops}
+const saveShop = (shop)=> {
+fs.readFile(shopsFilePath, (err,data)=> {
+    let shops = []
+    if (!err) {
+        shops = JSON.parse(data);
+    }
+    shops.push(shop);
+    fs.writeFile(shopsFilePath, JSON.stringify(shops,null,2), (err) => {
+        if (err) throw err;
+        console.log('Shop saved!');
+    });
+},
+)}
+
+export default router 

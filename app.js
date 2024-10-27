@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
-import { adminRoutes } from './routes/admin.js';
+import adminRoutes  from './routes/admin.js';
 import arkadRoutes from './routes/arkad.js';
 import __dirname from './util/rootpath.js';
 
@@ -11,6 +11,8 @@ const PORT = 3000;
 app.use(bodyParser.urlencoded({ extended:false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.set('view engine', 'ejs');
+app.set('views',"views");
 app.use('/admin',adminRoutes);
 app.use("/", arkadRoutes);
 
