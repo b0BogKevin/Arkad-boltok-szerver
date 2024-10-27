@@ -13,7 +13,12 @@ router.get('/add-shop', function (req, res) {
 });
 
 router.post('/add-shop', function (req, res) {
-    shops.push({name : req.body.title});
+    shops.push(
+        {
+            name : req.body.name,
+            description : req.body.description,
+            location : req.body.location
+        });
     res.redirect('/');
 })
 
