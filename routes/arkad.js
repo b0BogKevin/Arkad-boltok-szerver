@@ -9,7 +9,8 @@ const shopsFilePath = path.join(__dirname, 'public', 'data', 'shops.json');
 router.get('/', function(req, res) {
     getShops((shops) => {
         res.render('index.ejs', {
-            shops: shops
+            shops: shops,
+            path: '/'
         })
     })
     

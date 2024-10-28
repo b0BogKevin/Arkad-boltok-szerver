@@ -9,8 +9,10 @@ const shopsFilePath = path.join(__dirname, 'public', 'data', 'shops.json');
 
 router.get('/add-shop', function (req, res) {
     res.render('add-shop.ejs', {
-
+        pagetitle: 'add-shop',
+        path: '/admin/add-shop'
     });
+    
 });
 
 router.post('/add-shop', function (req, res) {

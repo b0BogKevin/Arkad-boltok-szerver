@@ -3,5 +3,15 @@
     "name": "ZARA",
     "description": "ruha meg tobb ruha",
     "location": "2. emelet 23."
+  },
+  {
+    "name": "Crocs",
+    "description": "papucs",
+    "location": "3. emelet 24. üzlet"
+  },
+  {
+    "name": "Papp Zsolt kedvenc habzsoloja",
+    "description": "Habzsolni valók",
+    "location": "Legalul"
   }
 ]

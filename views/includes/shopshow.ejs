@@ -1,0 +1,18 @@
+<% if (shops.length > 0) { %>
+    <div>
+        <% for (let shop of shops) { %>
+            <article>
+                <header>
+                    <h1><%= shop.name %></h1>
+                </header>
+                <div>
+                    <h2><%= shop.description %></h2>
+                    <p><%= shop.location %></p>
+                    <hr style="border: 3px solid black; width: 500px;">
+                </div>
+            </article>
+        <% } %>
+    </div>
+<% } else { %>
+    <h1>No Products Found!</h1>
+<% } %>
