@@ -21,7 +21,10 @@ router.post('/add-shop', function (req, res) {
         description : req.body.description,
         location : req.body.location
     }
-    saveShop(newShop);
+    if (!(newShop.description == ""  || newShop.location ==""|| newShop.name =="")) {
+        saveShop(newShop);
+    }
+    
     res.redirect('/');
 })
 
